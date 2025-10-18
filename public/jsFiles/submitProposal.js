@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       counter.style.marginTop = "5px";
       counter.style.color = remaining < 0 ? "red" : "#666";
       coverLetter.parentNode.appendChild(counter);
-    }
+    }  
     const counter = document.querySelector(".char-counter");
     counter.textContent = `${remaining} characters remaining`;
     counter.style.color = remaining < 0 ? "red" : "#666";
