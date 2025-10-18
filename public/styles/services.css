@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.search-bar {
+  position: relative;
+}
+
+#search-results {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+}
+
+#search-results .list-group-item {
+  cursor: pointer;
+}
+
+#search-results .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.filter-buttons .btn {
+  margin: 0 5px;
+}
+
+.service-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card .card-body {
+  text-align: center;
+}

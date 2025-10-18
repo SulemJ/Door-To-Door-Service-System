@@ -1,0 +1,113 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chapa Payment Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome for icons (optional) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      /* background: linear-gradient(135deg, #e0e7ff 0%, #fff 100%); */
+      min-height: 100vh;
+       /*display: flex; */
+      align-items: center;
+      justify-content: center;
+    }
+    .payment-card {
+      max-width: 800px;
+      margin: 2rem auto;
+      margin-top: 10rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      background: #fff;
+      padding: 2rem 2rem 1.5rem 2rem;
+    }
+    .payment-card h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: #3b82f6;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<%- include('components/header.ejs') %>
+<body>
+  <div class="container mt-5">
+  <div class="payment-card">
+    <h1><i class="fas fa-credit-card me-2"></i>Pay with Chapa</h1>
+    <form id="paymentForm" autocomplete="off">
+      <div class="mb-3" hidden>
+        <label class="form-label" for="name">Name</label>
+        <input type="text"  name="name" id="name" class="form-control" value="Test User" required>
+      </div>
+      <div class="mb-3" hidden >
+        <label class="form-label" for="email">Email</label>
+        <input type="email"name="email" id="email" class="form-control" value="abebe.tesfaye@gmail.com" required>
+      </div>
+<div class="mb-3">
+  <label class="form-label" for="amount">Amount (ETB)</label>
+  <select name="amount" id="amount" class="form-select" required>
+    <option value="5">5 tokens - 50 Birr</option>
+    <option value="10">10 tokens - 100 Birr</option>
+    <option value="20">20 tokens - 200 Birr</option>
+    <option value="50">50 tokens - 500 Birr</option>
+    <option value="100">100 tokens - 1000 Birr</option>
+  </select>
+</div>
+      <button type="submit" class="btn btn-primary w-100">
+        <i class="fas fa-paper-plane me-1"></i>Pay Now
+      </button>
+    </form>
+  </div>
+  </div>
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        amount: formData.get('amount')
+      };
+
+      try {
+        // Send payment initiation request to backend
+        const res = await fetch('/api/initiate-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.checkout_url) {
+          // Redirect user to Chapa's payment page
+          window.location.href = result.checkout_url;
+        } else {
+          alert('Payment initialization failed');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Error initiating payment');
+      }
+    });
+  </script>
+</body>
+</html>

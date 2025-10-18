@@ -1,0 +1,12 @@
+<!-- views/viewProposals.ejs -->
+<h2>Proposals for "<%= job.title %>"</h2>
+<ul class="list-group">
+  <% proposals.forEach(p => { %>
+    <li class="list-group-item">
+      <strong>User ID:</strong> <%= p.user_id %><br>
+      <strong>Expected Pay:</strong> $<%= p.expected_pay %><br>
+      <strong>Cover Letter:</strong><br>
+      <p><%= p.cover_letter %></p>
+    </li>
+  <% }) %>
+</ul>

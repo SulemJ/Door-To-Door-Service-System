@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Provider Dashboard - MaintenanceHub</title>
+
+    <!-- FullCalendar Core and Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Correct path to FullCalendar's main CSS file -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!--css styles-->
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/providerDashboard.css" />
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src=""
+            alt="Provider"
+            id="providerAvatar"
+            class="provider-avatar"
+          />
+          <div class="provider-info">
+            <h5 id="providerName">Loading...</h5>
+            <p id="providerProfession">Loading...</p>
+          </div>
+        </div>
+
+       <nav class="sidebar-nav">
+          <!-- <a href="#overview" class="nav-item active" data-section="overview">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Overview</span>
+          </a> -->
+          <a href="#bookings" class="nav-item" data-section="bookings">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Bookings</span>
+          </a>
+          <a href="#schedule" class="nav-item" data-section="schedule">
+            <i class="fas fa-clock"></i>
+            <span>Schedule</span>
+          </a>
+         <!--  <a href="#reviews" class="nav-item" data-section="reviews">
+            <i class="fas fa-star"></i>
+            <span>Reviews</span>
+          </a> -->
+          <a href="#profile" class="nav-item" data-section="profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+          <a href="/allJobs" class="btn btn-outline-light mb-2 border-radius-0 w-100" data-section="jobs">
+            <!-- <i class="fas fa-user"></i> -->
+            <span>Jobs</span>
+          </a>
+          <br>
+          <button id="logoutBtn" class="btn btn-outline-light w-100">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+        </nav>
+
+
+        <!-- <div class="sidebar-footer">
+          <button id="logoutBtn" class="btn btn-outline-light w-100">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+        </div>  -->
+      </aside>
+
+     
+
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+          <button style="border: none; color: white;">
+            <!-- <i class="fas fa-bars"></i> -->
+          </button>
+          <div class="top-bar-right">
+            <!-- <div class="notification-bell">
+              <i class="fas fa-bell"></i>
+              <span class="notification-badge">0</span>
+            </div> -->
+            <div class="availability-toggle">
+              <label class="switch">
+                <input type="checkbox" id="availabilityToggle" />
+                <span class="slider round"></span>
+              </label>
+              <span id="availabilityStatus">Available</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Sections -->
+        <div class="dashboard-content">
+          <!-- Overview Section -->
+          <section id="overview" class="dashboard-section active">
+            <div class="section-header">
+              <h2>Dashboard Overview</h2>
+              <!-- <div class="date-range">
+                <select id="periodFilter" class="form-select">
+                  <option value="today">Today</option>
+                  <option value="week">This Week</option>
+                  <option value="month">This Month</option>
+                  <option value="year">This Year</option>
+                </select>
+              </div> -->
+            </div>
+
+            <div class="stats-cards">
+              <div class="stat-card">
+                <div class="stat-icon bg-primary">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="totalBookings">0</h3>
+                  <p>Total Bookings</p>
+                </div>
+              </div>
+              <!-- <div class="stat-card">
+                <div class="stat-icon bg-success">
+                  <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="averageRating">0.0</h3>
+                  <p>Average Rating</p>
+                </div>
+              </div> -->
+              <div class="stat-card">
+                <div class="stat-icon bg-info">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="totalClients">0</h3>
+                  <p>Total Clients</p>
+                </div>
+              </div>
+              <!-- <div class="stat-card">
+                <div class="stat-icon bg-warning">
+                  <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="totalEarnings">$0</h3>
+                  <p>Total Earnings</p>
+                </div>
+              </div> -->
+            </div>
+
+            <!-- <div class="charts-container">
+              <div class="chart-card">
+                <h4>Booking Trends</h4>
+                <canvas id="bookingTrendsChart"></canvas>
+              </div>
+              <div class="chart-card">
+                <h4>Service Distribution</h4>
+                <canvas id="serviceDistributionChart"></canvas>
+              </div>
+            </div> -->
+
+            <!-- <div class="recent-activity">
+              <h4>Recent Activity</h4>
+              <div id="activityList" class="activity-list">
+               Activity items will be added here dynamically -->
+             <!--   </div>
+            </div> -->
+          </section>
+
+          <!-- Bookings Section -->
+          <section id="bookings" class="dashboard-section">
+            <!-- <div class="section-header">
+              <h2>Manage Bookings</h2>
+              <div class="booking-filters">
+                <select id="bookingStatusFilter" class="form-select">
+                  <option value="all">All Status</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+                <input
+                  type="date"
+                  id="bookingDateFilter"
+                  class="form-control"
+                />
+              </div>
+            </div> -->
+
+            <div class="bookings-table-container">
+              <table class="table bookings-table">
+                <thead>
+                  <tr>
+                    <th>Client</th>
+                    <th>Service</th>
+                    <th>Date & Time</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="bookingsTableBody">
+                  <!-- Bookings will be added here dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Schedule Section -->
+          <section id="schedule" class="dashboard-section">
+            <div class="section-header">
+              <h2>Schedule Management</h2>
+            </div>
+            <!-- Calendar Container -->
+              <div class="calendar-wrapper">
+                <div id="providerCalendar"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Reviews Section -->
+          <!-- <section id="reviews" class="dashboard-section">
+            <div class="section-header">
+              <h2>Client Reviews</h2>
+              <div class="review-filters">
+                <select id="reviewRatingFilter" class="form-select">
+                  <option value="all">All Ratings</option>
+                  <option value="5">5 Stars</option>
+                  <option value="4">4 Stars</option>
+                  <option value="3">3 Stars</option>
+                  <option value="2">2 Stars</option>
+                  <option value="1">1 Star</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="reviews-stats">
+              <div class="rating-overview">
+                <div class="average-rating">
+                  <h3 id="overallRating">4.5</h3>
+                  <div class="stars" id="overallStars">
+                   Stars will be added dynamically -->
+                 <!--   </div>
+                  <p><span id="totalReviews">0</span> reviews</p>
+                </div>
+                <div class="rating-bars">
+                  Rating distribution bars will be added here -->
+             <!--    </div>
+              </div>
+            </div>
+
+            <div class="reviews-grid" id="reviewsGrid">
+             Reviews will be added here dynamically -->
+           <!--   </div>
+          </section> -->
+
+          <!-- Profile Section -->
+          <section id="profile" class="dashboard-section">
+            <div class="section-header">
+              <h2>Profile Settings</h2>
+              <button class="btn btn-primary" id="saveProfileBtn">
+                Save Changes
+              </button>
+            </div>
+
+            <div class="profile-container">
+              <div class="profile-header">
+                <div class="profile-avatar">
+                  <img src="" alt="Profile" id="profileAvatar" />
+                  <!-- <button class="btn btn-light" id="changeAvatarBtn">
+                    <i class="fas fa-camera"></i>
+                  </button> -->
+                </div>
+                <div class="profile-info">
+                  <h3 id="profileName"></h3>
+                  <p id="profileProfession"></p>
+                  <div class="profile-stats">
+                    <div class="stat">
+                      <h4 id="profileTotalBookings">0</h4>
+                      <p>Bookings</p>
+                    </div>
+                    <!-- <div class="stat">
+                      <h4 id="profileRating">0.0</h4>
+                      <p>Rating</p>
+                    </div> -->
+                    <!-- <div class="stat">
+                      <h4 id="profileCompletionRate">0%</h4>
+                      <p>Completion</p>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="profile-form">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Full Name</label>
+                      <input
+                        type="text"
+                        id="profileFullName"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label class="form-label">Profession</label>
+                      <input
+                        type="text"
+                        id="profileProfessionInput"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <!-- Add more profile fields -->
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FullCalendar Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.10/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.10/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@6.1.10/main.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <!-- Chart.js -->
+    </script><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="jsFiles/providerDashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaintenanceHub - Your Home Service Solution</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/home.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Include Header -->
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section
+      class="hero"
+      style="
+        background: url('images/hero.jpg') center/cover no-repeat;
+        position: relative;
+      "
+    >
+      <div class="overlay"></div>
+      <div class="container text-center text-white">
+        <h1 class="display-4">Find Trusted Home Services</h1>
+        <p class="lead">
+          Professional networking and maintenance services at your doorstep
+        </p>
+        <!-- Search Bar -->
+        <div class="search-bar mt-4">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="search"
+              placeholder="What service do you need?"
+            />
+            <button class="btn btn-primary" id="search-btn">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+        </div>
+
+        <script>
+          document
+            .getElementById("search-btn")
+            .addEventListener("click", () => {
+              const query = document.getElementById("search").value.trim();
+              if (query) {
+                // Redirect to the services page with the search query as a URL parameter
+                window.location.href = `services.html?search=${encodeURIComponent(
+                  query
+                )}`;
+              }
+            });
+        </script>
+        <div class="popular-services mt-3">
+          <span>Popular: </span>
+          <a href="#" class="badge bg-light text-dark">Plumbing</a>
+          <a href="#" class="badge bg-light text-dark">Electrical</a>
+          <a href="#" class="badge bg-light text-dark">Cleaning</a>
+          <a href="#" class="badge bg-light text-dark">Networking</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services py-5">
+      <div class="container text-center">
+        <h2 class="mb-4">Our Key Services</h2>
+        <p class="mb-5">Discover the range of services we offer</p>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card service-card">
+              <div class="card-body">
+                <i class="fas fa-network-wired fa-3x mb-3"></i>
+                <h5 class="card-title">Networking Services</h5>
+                <p class="card-text">
+                  Network installation and maintenance for homes
+                  and businesses.
+                </p>
+                <!-- <a href="NetworkingS.html" class="btn btn-primary"
+                  >Learn More</a
+                > -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card service-card">
+              <div class="card-body">
+                <i class="fas fa-tools fa-3x mb-3"></i>
+                <h5 class="card-title">Maintenance Services</h5>
+                <p class="card-text">
+                  Comprehensive home maintenance and repair solutions.
+                </p>
+                <!-- <a href="MaintenanceS.html" class="btn btn-primary"
+                  >Learn More</a
+                > -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card service-card">
+              <div class="card-body">
+                <i class="fas fa-plug fa-3x mb-3"></i>
+                <h5 class="card-title">Electrical Services</h5>
+                <p class="card-text">
+                  Professional electrical installation and repair services.
+                </p>
+                <!-- <a href="#" class="btn btn-primary">Learn More</a> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card service-card">
+              <div class="card-body">
+                <i class="fas fa-tint fa-3x mb-3"></i>
+                <h5 class="card-title">Plumbing Services</h5>
+                <p class="card-text">
+                  Expert plumbing solutions for all your needs.
+                </p>
+                <!-- <a href="#" class="btn btn-primary">Learn More</a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials py-5 bg-light">
+      <div class="container text-center">
+        <h2 class="mb-4">What Our Customers Say</h2>
+        <p class="mb-5">Real experiences from satisfied customers</p>
+        <div
+          id="testimonialsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <blockquote class="blockquote">
+                <p>"Great service! Highly recommend."</p>
+                <footer class="blockquote-footer">John Doe</footer>
+              </blockquote>
+            </div>
+            <div class="carousel-item">
+              <blockquote class="blockquote">
+                <p>"Professional and reliable."</p>
+                <footer class="blockquote-footer">Jane Smith</footer>
+              </blockquote>
+            </div>
+            <div class="carousel-item">
+              <blockquote class="blockquote">
+                <p>"Quick and efficient."</p>
+                <footer class="blockquote-footer">Mike Johnson</footer>
+              </blockquote>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="cta-section py-5 text-white"
+      style="background: linear-gradient(45deg, #44586e, #6c7685e0)"
+    >
+      <div class="container text-center">
+        <h2 class="mb-4">Ready to Get Started?</h2>
+        <p class="mb-5">
+          Join our platform today and connect with skilled professionals
+        </p>
+        <a href="services.html" class="btn btn-light btn-lg me-3"
+          >Browse Services</a
+        >
+      </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="jsFiles/home.js"></script>
+    <script>
+  fetch('/api/session')
+    .then(res => res.json())
+    .then(data => {
+      if (data.loggedIn) {
+        document.getElementById('dashboard-link').style.display = 'inline-block';
+      }
+    });
+</script>
+
+  </body>
+</html>

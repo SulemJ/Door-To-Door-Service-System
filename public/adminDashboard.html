@@ -1,0 +1,234 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - MaintenanceHub</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/admin.css" rel="stylesheet" />
+
+  </head>
+  <body>
+   <div class="admin-dashboard">   
+<div class="sidebar d-lg-flex d-none flex-column">
+  <div class="sidebar-header">
+    <i class="fas fa-tools"></i>
+    <span>MaintenanceHub</span>
+  </div>
+  <ul class="sidebar-menu">
+    <li class="active">
+      <a href="/adminDashboard.html">
+        <i class="fas fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a href="/api/admin/applicants">
+        <i class="fas fa-user-plus"></i>
+        <span id="admin-form">Add Provider</span>
+      </a>
+    </li>
+    <li>
+      <a href="/index.html" >
+        <i class="fas fa-user-shield"></i>
+        <span>Home</span>
+      </a>
+    </li>
+    <li>
+        <button id="logoutBtn" class="btn btn-outline-light w-100">
+
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+        </button>
+    </li>
+  </ul>
+</div>
+
+ <!-- Hamburger Menu -->
+<nav class="navbar d-lg-none navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand " href="#">
+      <i class="fas fa-tools me-2"></i>MaintenanceHub
+    </a>
+    <button
+      class="navbar-toggler bg-dark"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#sidebarNav"
+      aria-controls="sidebarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="sidebarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="adminDashboard.html">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="admin.html">
+            <i class="fas fa-user-plus"></i> Add Provider
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#addAdminModal">
+            <i class="fas fa-user-shield"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+          <button style="border: none; color: white;">
+           
+          </button>
+          <div class="admin-info "  >
+            <span id="adminName"   >Stota Belay</span>
+            <img
+              src="/uploads/admin.jpg"
+              alt="Admin"
+              class="admin-avatar"
+               
+            />
+          </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="container-fluid dashboard-content">
+          <!-- Statistics Cards -->
+          <div class="row stats-cards">
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-icon bg-info">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="totalProviders">0</h3> 
+                  
+                  <span>Total Providers</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-icon bg-success">
+                  <i class="fas fa-user-check"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="activeProviders">0</h3>
+                  <span>Active Providers</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-icon bg-warning">
+                  <i class="fas fa-user-clock"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="inactiveProviders">0</h3>
+                  <span>Inactive Providers</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-icon bg-info">
+                  <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-details">
+                  <h3 id="totalBookings">0</h3>
+                  <span>Total Bookings</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+ <!-- </div> -->
+          <!-- Providers List Section -->
+          <div class="card mt-4">
+            <div
+              class="card-header d-flex justify-content-between align-items-center"
+            >
+              <h5 class="mb-0" id="provider-list">Service Providers</h5>
+              <div class="d-flex gap-2">
+                <input
+                  type="text"
+                  id="searchProvider"
+                  class="form-control"
+                  placeholder="Search providers..."
+                />
+                <button id="refreshData" class="btn btn-primary">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div id="providersList" class="row g-4">
+                Providers will be dynamically added here
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Deletion</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to remove this service provider?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn  btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-danger" id="confirmDelete">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="jsFiles/adminDashboard.js"></script>
+  </body>
+</html> 

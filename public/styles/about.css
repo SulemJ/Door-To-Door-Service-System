@@ -1,0 +1,487 @@
+/* General Styles */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #3b82f6;
+  --text-color: #1f2937;
+  --light-bg: #f3f4f6;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(0, 123, 255, 0.9), rgba(0, 123, 255, 0.9)),
+    url("../images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.hero .lead {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* Mission Section */
+.mission {
+  padding: 50px 0;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+.mission-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--text-color);
+}
+
+.mission-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+.mission-statement {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #2d3748;
+  margin-bottom: 30px;
+}
+
+.dedication-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+}
+
+.dedication-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dedication-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.dedication-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dedication-card:hover::after {
+  transform: scaleX(1);
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.icon-wrapper i {
+  font-size: 24px;
+  color: white;
+}
+
+.dedication-card h3 {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.dedication-card p {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.mission-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-radius: 15px;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Features Section */
+.feature-card {
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-card i {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Services Showcase Styles */
+.services-showcase {
+  padding: 100px 0;
+  background: var(--light-bg);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--light-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.service-icon i {
+  font-size: 30px;
+  color: var(--primary-color);
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.service-features li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.service-features i {
+  color: var(--primary-color);
+  margin-right: 10px;
+}
+
+.learn-more {
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 15px;
+  transition: color 0.3s ease;
+}
+
+.learn-more i {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.learn-more:hover {
+  color: var(--secondary-color);
+}
+
+.learn-more:hover i {
+  transform: translateX(5px);
+}
+
+/* Statistics Section */
+.statistics {
+  padding: 80px 0;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-item {
+  padding: 20px;
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* Add animation for statistics */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-item {
+  animation: countUp 1s ease-out forwards;
+}
+
+/* Contact Section */
+.contact {
+  background-color: white;
+}
+
+.contact-info {
+  margin-top: 30px;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+}
+
+.contact-info i {
+  color: #007bff;
+  margin-right: 10px;
+  width: 20px;
+}
+
+.contact-form .form-control {
+  margin-bottom: 20px;
+  padding: 12px;
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.btn-primary {
+  padding: 12px 30px;
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.postJob{
+  /* .form-control { */
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  margin-bottom: 20px;
+  padding: 12px;
+}
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero .lead {
+    font-size: 1.2rem;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .feature-card {
+    margin-bottom: 30px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mission {
+    padding: 60px 0;
+  }
+
+  .mission-statement {
+    font-size: 1.1rem;
+  }
+
+  .dedication-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mission-footer {
+    margin-top: 30px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dedication-card {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.dedication-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.dedication-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dedication-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.dedication-card:nth-child(4) {
+  animation-delay: 0.4s;
+}

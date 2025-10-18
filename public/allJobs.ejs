@@ -1,0 +1,146 @@
+    </style> 
+    <%- include('components/header.ejs') %>
+  <body>
+    <!-- Header -->
+    <header class="text-dark py-3">
+      <div class="container">
+        <h1 class="text-center">All Jobs</h1>
+      </div>
+    </header>
+
+    <!-- Search and Filter Section -->
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-md-8">
+          <input
+            type="text"
+            id="search"
+            class="form-control"
+            placeholder="Search for jobs..."
+          />
+        </div>
+        <div class="col-md-4 text-end">
+          <select id="categoryFilter" class="form-select">
+           <option value="all">All Categories</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jobs Grid -->
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div
+          class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"
+          id="jobsGrid"
+        >
+          <% jobs.forEach((job) => { %>
+          <div class="col">
+            <div class="card shadow-sm job-card">
+              <div class="card-body">
+                <h2 class="card-title"><%= job.category %></h2>
+                <h5 class="card-title"><%= job.subcategory %></h5>
+                <p class="card-text"><%= job.address %></p>
+                <!-- <p class="card-text">< job.description %></p> -->
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="/jobs/<%= job.id %>"  class="btn btn-sm btn-success"
+                      >View</a>
+                      
+                    
+                  </div>
+                  <small class="text-muted"><%= job.postedTime %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+<!-- Add this just before </body> -->
+<div class="d-flex justify-content-center my-4" id="jobs-pagination"></div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("/api/admin/categories")
+      .then(response => response.json())
+      .then(data => {
+        const categoryFilter = document.getElementById("categoryFilter");
+
+        data.forEach(category => {
+          const option = document.createElement("option");
+          option.value = category.slug || category.name.toLowerCase();
+          option.textContent = category.name;
+          categoryFilter.appendChild(option);
+        });
+      })
+      .catch(err => {
+        console.error("Error fetching categories:", err);
+      });
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("search");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const jobsGrid = document.getElementById("jobsGrid");
+  const allCards = Array.from(jobsGrid.children);
+  const perPage = 6;
+  let currentPage = 1;
+
+  function filterAndPaginate() {
+    const query = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const filtered = allCards.filter(card => {
+      const title = card.querySelector(".card-title").textContent.toLowerCase();
+      const desc = card.querySelector(".card-text").textContent.toLowerCase();
+      const matchesQuery = title.includes(query) || desc.includes(query);
+      const matchesCategory = category === "all" || (card.dataset.category === category);
+      return matchesQuery && matchesCategory;
+    });
+    allCards.forEach(card => card.style.display = "none");
+    filtered.slice((currentPage-1)*perPage, currentPage*perPage).forEach(card => card.style.display = "block");
+    renderPagination(filtered.length);
+  }
+
+  function renderPagination(total) {
+    const totalPages = Math.ceil(total / perPage) || 1;
+    const pagDiv = document.getElementById("jobs-pagination");
+    pagDiv.innerHTML = "";
+    for(let i=1; i<=totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.className = "btn btn-sm mx-1 " + (i===currentPage ? "btn-dark" : "btn-outline-dark");
+      btn.textContent = i;
+      btn.onclick = () => { currentPage = i; filterAndPaginate(); };
+      pagDiv.appendChild(btn);
+    }
+  }
+
+  searchInput.addEventListener("input", () => { currentPage = 1; filterAndPaginate(); });
+  categoryFilter.addEventListener("change", () => { currentPage = 1; filterAndPaginate(); });
+
+  // Add data-category to each card for filtering
+  allCards.forEach(card => {
+    const cat = card.querySelector(".card-title")?.textContent.trim().toLowerCase();
+    card.dataset.category = cat || "";
+  });
+
+  filterAndPaginate();
+});
+</script>
+  <!-- <script src="routers/admin.js"></script> -->
+
+  </body>
+<!-- </html> -->
+ 
+
+
+
+
+
+
+
+
+

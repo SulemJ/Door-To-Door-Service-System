@@ -1,0 +1,296 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Bookings</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/userBookings.css">
+        <link rel="stylesheet" href="styles/Networking&MaintS.css" />
+        <!-- Add to head section of both files --> 
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+   
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <i class="fas fa-tools me-2"></i>
+            MaintenanceHub
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="bookings.html">My Booking</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/myPosts">My Posts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="AllserviceProviders.html">Service Providers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/postJob">Post a Job</a>
+              </li>
+              <li class="nav-item"  id="logoutBtn" >
+                <a class="nav-link" >Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+   
+
+    <div class="container mt-5 pt-5">
+      <h2 class="text-center mb-4 mt-4">Post a Job</h2>
+      
+      <form class="mt-4"  action="/post" method="post">
+        <div class="row">
+          <!-- Job Title -->
+          
+<div class="col-md-6 mb-3">
+  <label for="category" class="form-label">Category</label>
+  <select name="category" id="category" class="form-control" required>
+    <option value="">Select category</option>
+    <% categories.forEach(cat => { %>
+      <option value="<%= cat.id %>"><%= cat.name %></option>
+    <% }) %>
+    <option value="other">Other</option>
+  </select>
+  <div class="invalid-feedback">Category is required.</div>
+</div>
+
+
+
+<input type="hidden" name="categoryName" id="categoryName">
+<input type="hidden" name="subcategoryName" id="subcategoryName">
+
+
+
+
+<div class="col-md-6 mb-3" id="subcategory-container" style="display:none;">
+  <label for="subcategory" class="form-label">Subcategory</label>
+  <select name="subcategory" id="subcategory" class="form-control">
+    <option value="">Select subcategory</option>
+    <!-- Options will be populated by JS -->
+    <option value="other">Other</option>
+  </select>
+  <div class="invalid-feedback">Subcategory is required.</div>
+</div>
+
+<div class="col-md-6 mb-3" id="other-category-container" style="display:none;">
+  <label for="otherCategory" class="form-label">Other Category</label>
+  <input type="text" name="otherCategory" id="otherCategory" class="form-control" placeholder="Enter category">
+</div>
+
+<div class="col-md-6 mb-3" id="other-subcategory-container" style="display:none;">
+  <label for="otherSubcategory" class="form-label">Other Subcategory</label>
+  <input type="text" name="otherSubcategory" id="otherSubcategory" class="form-control" placeholder="Enter subcategory">
+</div>
+
+
+
+
+
+
+          <!-- Estimate Duration -->
+          <div class="col-md-6 mb-3">
+            <label for="time" class="form-label">Estimate Duration</label>
+            <input
+              name="time"
+              type="text"
+              class="form-control"
+              id="time"
+              placeholder="e.g., 2 hours, 3 days"
+              required
+            />
+            <div class="invalid-feedback">Estimate duration is required.</div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="money" class="form-label">Estimate Price</label>
+            <input
+              name="money"
+              type="text"
+              class="form-control"
+              id="money"
+              placeholder="e.g., 60 Birr"
+              required
+            />
+            <div class="invalid-feedback">Estimate Price is required.</div>
+          </div>
+
+          <!-- Address -->
+          <div class="col-12 mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input
+              name="address"
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Enter job location"
+            />
+          </div>
+
+          <!-- Description -->
+          <div class="col-12 mb-3">
+            <label for="desc" class="form-label">Job Description</label>
+            <textarea
+              name="desc"
+              class="form-control"
+              id="desc"
+              rows="4"
+              placeholder="Provide a detailed description of the job"
+              
+            ></textarea>
+            <div class="invalid-feedback">Job description is required.</div>
+          </div>
+
+          
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Post Job
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- Footer Section -->
+    <footer class="bg-light py-4 mt-5">
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2025 MaintenanceHub. All Rights Reserved.</p>
+        <p>
+          <a href="privacy.html">Privacy Policy</a> |
+          <a href="terms.html">Terms of Service</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("#logoutBtn, #logoutBtn .nav-link").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      sessionStorage.clear();
+      window.location.href = "index.html";
+    });
+  });
+});
+</script>
+<script>
+  const allSubcategories = <%- JSON.stringify(subcategories) %>;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const categorySelect = document.getElementById('category');
+    const subcategorySelect = document.getElementById('subcategory');
+    const categoryNameInput = document.getElementById('categoryName');
+    const subcategoryNameInput = document.getElementById('subcategoryName');
+    const subcategoryContainer = document.getElementById('subcategory-container');
+    const otherCategoryContainer = document.getElementById('other-category-container');
+    const otherSubcategoryContainer = document.getElementById('other-subcategory-container');
+
+    categorySelect.addEventListener('change', function () {
+      const selectedId = this.value;
+      const selectedOption = categorySelect.options[categorySelect.selectedIndex];
+
+      // Save selected category name
+      categoryNameInput.value = selectedOption.textContent;
+
+      if (selectedId === 'other') {
+        otherCategoryContainer.style.display = '';
+        subcategoryContainer.style.display = 'none';
+        otherSubcategoryContainer.style.display = 'none';
+        subcategoryNameInput.value = ''; // clear it if not needed
+      } else if (selectedId) {
+        otherCategoryContainer.style.display = 'none';
+        subcategoryContainer.style.display = '';
+        const filtered = allSubcategories.filter(sc => sc.category_id == selectedId);
+        subcategorySelect.innerHTML = '<option value="">Select subcategory</option>';
+        filtered.forEach(sc => {
+          subcategorySelect.innerHTML += `<option value="${sc.id}">${sc.name}</option>`;
+        });
+        subcategorySelect.innerHTML += `<option value="other">Other</option>`;
+        otherSubcategoryContainer.style.display = 'none';
+        subcategoryNameInput.value = ''; // reset
+      } else {
+        subcategoryContainer.style.display = 'none';
+        otherCategoryContainer.style.display = 'none';
+        otherSubcategoryContainer.style.display = 'none';
+        categoryNameInput.value = '';
+        subcategoryNameInput.value = '';
+      }
+    });
+
+    subcategorySelect.addEventListener('change', function () {
+      const selectedOption = subcategorySelect.options[subcategorySelect.selectedIndex];
+      subcategoryNameInput.value = selectedOption.textContent;
+
+      if (this.value === 'other') {
+        otherSubcategoryContainer.style.display = '';
+      } else {
+        otherSubcategoryContainer.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+      
+        // Populate email if user is logged in
+        const user = JSON.parse(sessionStorage.getItem("loggedInUser"));
+        if (user?.email) {
+          const emailField = document.createElement("input");
+          emailField.type = "hidden";
+          emailField.name = "email";
+          emailField.value = user.email;
+          document.querySelector("form").appendChild(emailField);
+        }
+
+        // File upload preview
+        const documentInput = document.getElementById("document");
+        const fileInfo = document.getElementById("fileInfo");
+        const fileName = document.getElementById("fileName");
+
+        documentInput.addEventListener("change", () => {
+          if (documentInput.files.length > 0) {
+            fileName.textContent = documentInput.files[0].name;
+            fileInfo.style.display = "block";
+          } else {
+            fileInfo.style.display = "none";
+          }
+        });
+
+        // Form validation
+        const form = document.querySelector("form");
+        form.addEventListener("submit", (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        });
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!-- providerProfile.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Provider Profile</title>
+    <link rel="stylesheet" href="styles/providerProfile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css"
+    />
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+    <!--css style-->
+    <link rel="stylesheet" href="styles/Networking&MaintS.css" />
+    <!-- Add to head section of both files -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+     </head>
+  <body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-tools me-2"></i>
+          Service Provider Profile
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="NetworkingS.html">Networking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="MaintenanceS.html">Maintenance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="AllserviceProviders.html">Service Providers</a>
+            </li>
+            <li class="nav-item"  id="logoutBtn" >
+                <a class="nav-link" >Log Out</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav> 
+    <main>
+      <!-- <heade>
+         <div class="header"> <h1>Service Provider Profile</h1></div>
+       </heade> -->
+      <section id="provider-info">
+        <div class="pt-5 mt-5">
+          <h1 class="text-center mb-4">Service Provider Profile</h1>
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="cv-container">
+                <!-- Header Section -->
+                <h2 id="providerName">Provider Name</h2>
+
+                <div class="row mt-4">
+                  <!-- Contact Details -->
+                  <div class="col-lg-12 contact-section">
+                    <p id="providerProfession">Profession</p>
+                    <p>
+                      Email:
+                      <span id="providerContact">example@example.com</span>
+                    </p>
+                    <p>Phone: <span id="providerPhone">123-456-7890</span></p>
+                  </div>
+
+                  <!-- Personal Information -->
+                  <div class="col-lg-8 personal-information">
+                    <p id="providerInformation">Personal Information</p>
+                  </div>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="mt-4 work-experience">
+                  <p id="providerExperience">Work Experience</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="provider-schedule">
+        <h2>Schedule</h2>
+        <div id="providerCalendar"></div>
+      </section>
+
+      <!-- <section id="booking">
+        <button id="bookAppointment" onclick="bookAppointment()">
+          Book an Appointment
+        </button>
+      </section> -->
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Service App</p>
+    </footer>
+
+    <!-- <script>
+      function bookAppointment() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const providerId = urlParams.get("id");
+        window.location.href = `booking.html?providerId=${providerId}`;
+      }
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="jsFiles/allProviders.js" defer></script>
+ <!-- Bootstrap Bundle with Popper -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ <!-- FontAwesome for Icons -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+  </body>
+</html>

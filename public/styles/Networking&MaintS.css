@@ -1,0 +1,262 @@
+/* Modern Color Scheme */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-bg: #f8f9fa;
+  --dark-text: #2c3e50;
+  --light-text: #ffffff;
+  --gradient-bg: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+}
+
+/* Global Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  color: var(--dark-text);
+}
+
+/* Navbar Styling */
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--secondary-color);
+}
+
+.nav-link {
+  color: var(--primary-color);
+  font-weight: 500;
+  padding: 0.5rem 1.2rem !important;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--secondary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 80%;
+}
+
+/* Hero Section Enhancement */
+.background-section {
+  margin-top: 0.7px;
+  height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--light-text);
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.content h1 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1s ease;
+}
+
+.content .lead {
+  font-size: 1.25rem;
+  animation: fadeInUp 1s ease 0.3s;
+  animation-fill-mode: both;
+}
+
+/* Services Section */
+.section {
+  padding: 5rem 0;
+}
+
+.service-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.service-card .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-card .card-body {
+  padding: 1.5rem;
+}
+
+.service-card .card-title {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Testimonials Enhancement */
+.testimonial-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* Contact Section */
+.contact-section {
+  background: var(--gradient-bg);
+  color: var(--light-text);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.contact-section a {
+  color: var(--light-text);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.contact-section a:hover {
+  color: var(--accent-color);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .background-section {
+    height: 60vh;
+  }
+
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .content .lead {
+    font-size: 1.1rem;
+  }
+
+  .section {
+    padding: 3rem 0;
+  }
+}
+
+/* Why Choose Us Section Enhancement */
+.list-group-item {
+  border: none;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px !important;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transform: translateX(5px);
+}
+
+.list-group-item strong {
+  color: var(--secondary-color);
+}
+
+/* Carousel Controls Enhancement */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+.navbar-toggler {
+  background-color: #ccd6e1;
+  border-color: rgb(135, 114, 134);
+  border-width: 0.3rem;
+}
