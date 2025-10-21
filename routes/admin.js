@@ -1,6 +1,6 @@
 import express from 'express';
 import { db } from '../index.js';
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import multer from "multer";
 import crypto from "crypto";
 import path from "path";
