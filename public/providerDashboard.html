@@ -47,10 +47,6 @@
         </div>
 
        <nav class="sidebar-nav">
-          <!-- <a href="#overview" class="nav-item active" data-section="overview">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Overview</span>
-          </a> -->
           <a href="#bookings" class="nav-item" data-section="bookings">
             <i class="fas fa-calendar-alt"></i>
             <span>Bookings</span>
@@ -59,10 +55,6 @@
             <i class="fas fa-clock"></i>
             <span>Schedule</span>
           </a>
-         <!--  <a href="#reviews" class="nav-item" data-section="reviews">
-            <i class="fas fa-star"></i>
-            <span>Reviews</span>
-          </a> -->
           <a href="#profile" class="nav-item" data-section="profile">
             <i class="fas fa-user"></i>
             <span>Profile</span>
@@ -77,14 +69,6 @@
             <span>Logout</span>
           </button>
         </nav>
-
-
-        <!-- <div class="sidebar-footer">
-          <button id="logoutBtn" class="btn btn-outline-light w-100">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-          </button>
-        </div>  -->
       </aside>
 
      
@@ -118,14 +102,7 @@
           <section id="overview" class="dashboard-section active">
             <div class="section-header">
               <h2>Dashboard Overview</h2>
-              <!-- <div class="date-range">
-                <select id="periodFilter" class="form-select">
-                  <option value="today">Today</option>
-                  <option value="week">This Week</option>
-                  <option value="month">This Month</option>
-                  <option value="year">This Year</option>
-                </select>
-              </div> -->
+              
             </div>
 
             <div class="stats-cards">
@@ -138,15 +115,6 @@
                   <p>Total Bookings</p>
                 </div>
               </div>
-              <!-- <div class="stat-card">
-                <div class="stat-icon bg-success">
-                  <i class="fas fa-star"></i>
-                </div>
-                <div class="stat-info">
-                  <h3 id="averageRating">0.0</h3>
-                  <p>Average Rating</p>
-                </div>
-              </div> -->
               <div class="stat-card">
                 <div class="stat-icon bg-info">
                   <i class="fas fa-users"></i>
@@ -156,55 +124,15 @@
                   <p>Total Clients</p>
                 </div>
               </div>
-              <!-- <div class="stat-card">
-                <div class="stat-icon bg-warning">
-                  <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <div class="stat-info">
-                  <h3 id="totalEarnings">$0</h3>
-                  <p>Total Earnings</p>
-                </div>
-              </div> -->
+              
             </div>
 
-            <!-- <div class="charts-container">
-              <div class="chart-card">
-                <h4>Booking Trends</h4>
-                <canvas id="bookingTrendsChart"></canvas>
-              </div>
-              <div class="chart-card">
-                <h4>Service Distribution</h4>
-                <canvas id="serviceDistributionChart"></canvas>
-              </div>
-            </div> -->
-
-            <!-- <div class="recent-activity">
-              <h4>Recent Activity</h4>
-              <div id="activityList" class="activity-list">
-               Activity items will be added here dynamically -->
-             <!--   </div>
-            </div> -->
+            
           </section>
 
           <!-- Bookings Section -->
           <section id="bookings" class="dashboard-section">
-            <!-- <div class="section-header">
-              <h2>Manage Bookings</h2>
-              <div class="booking-filters">
-                <select id="bookingStatusFilter" class="form-select">
-                  <option value="all">All Status</option>
-                  <option value="Pending">Pending</option>
-                  <option value="Confirmed">Confirmed</option>
-                  <option value="Completed">Completed</option>
-                  <option value="Cancelled">Cancelled</option>
-                </select>
-                <input
-                  type="date"
-                  id="bookingDateFilter"
-                  class="form-control"
-                />
-              </div>
-            </div> -->
+            
 
             <div class="bookings-table-container">
               <table class="table bookings-table">
@@ -237,42 +165,6 @@
             </div>
           </section>
 
-          <!-- Reviews Section -->
-          <!-- <section id="reviews" class="dashboard-section">
-            <div class="section-header">
-              <h2>Client Reviews</h2>
-              <div class="review-filters">
-                <select id="reviewRatingFilter" class="form-select">
-                  <option value="all">All Ratings</option>
-                  <option value="5">5 Stars</option>
-                  <option value="4">4 Stars</option>
-                  <option value="3">3 Stars</option>
-                  <option value="2">2 Stars</option>
-                  <option value="1">1 Star</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="reviews-stats">
-              <div class="rating-overview">
-                <div class="average-rating">
-                  <h3 id="overallRating">4.5</h3>
-                  <div class="stars" id="overallStars">
-                   Stars will be added dynamically -->
-                 <!--   </div>
-                  <p><span id="totalReviews">0</span> reviews</p>
-                </div>
-                <div class="rating-bars">
-                  Rating distribution bars will be added here -->
-             <!--    </div>
-              </div>
-            </div>
-
-            <div class="reviews-grid" id="reviewsGrid">
-             Reviews will be added here dynamically -->
-           <!--   </div>
-          </section> -->
-
           <!-- Profile Section -->
           <section id="profile" class="dashboard-section">
             <div class="section-header">
@@ -286,9 +178,7 @@
               <div class="profile-header">
                 <div class="profile-avatar">
                   <img src="" alt="Profile" id="profileAvatar" />
-                  <!-- <button class="btn btn-light" id="changeAvatarBtn">
-                    <i class="fas fa-camera"></i>
-                  </button> -->
+                  
                 </div>
                 <div class="profile-info">
                   <h3 id="profileName"></h3>
@@ -298,14 +188,7 @@
                       <h4 id="profileTotalBookings">0</h4>
                       <p>Bookings</p>
                     </div>
-                    <!-- <div class="stat">
-                      <h4 id="profileRating">0.0</h4>
-                      <p>Rating</p>
-                    </div> -->
-                    <!-- <div class="stat">
-                      <h4 id="profileCompletionRate">0%</h4>
-                      <p>Completion</p>
-                    </div> -->
+                    
                   </div>
                 </div>
               </div>
